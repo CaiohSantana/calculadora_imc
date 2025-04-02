@@ -1,5 +1,5 @@
-import { Card, Box, Typography } from '@mui/material';
-
+import { Card, Box, Typography, TextField, Button } from '@mui/material';
+import calculateicon from './assets/calculate.svg'
 
 export default function App() {
 
@@ -23,29 +23,65 @@ export default function App() {
         }}
       >
 
-        {/*titulos*/}
+        {/* Titulo */}
         <Box
           marginY={'16px'}
+          display={'flex'}
+          alignItems={'center'}
         >
-          <Typography variant='h5' fontWeight={'700'}>
+          <a>
+            <img src={calculateicon} className="calculateicon" alt="calculateicon" style={{ width: "50px", height: "50px" }}/>
+          </a>
+
+          <Typography variant='h5' fontWeight={'700'} fontSize={'32px'}>
             Calculadora IMC
           </Typography>
         </Box>
 
-        {/*Entradas*/}
+        {/* Entradas */}
         <Box>
-          <Typography variant='h5'>
-            Entrada
-          </Typography>
+            
+          <Box
+            component="form"
+            sx={{ '& > :not(style)': { m: 1}, }}
+            noValidate
+            autoComplete="off"
+          >
+            <Box 
+            sx={{ 
+              width: 350, 
+              maxWidth: '100%', 
+              display: 'flex', 
+              alignContent: 'center', 
+              flexDirection: 'column' }}>
+
+              <TextField id="outlined-basic" label="Peso (kg)" variant="outlined" /> <br></br>
+              <TextField id="outlined-basic" label="Altura (m)" variant="outlined" /><br></br>
+              <Button variant="contained" sx={{
+                height:'55px'
+              }}>Calcular IMC</Button>
+            </Box>
+      
+          </Box>
         </Box>
 
-        {/*Resultado*/}
-        <Box>
-          <Typography variant='h5'>
-            Resultado
+        {/* Resultado */}
+        <Box
+        display={'grid'}
+        alignContent={'center'}
+        width={'90vw'}
+       margin={'30px'}
+        
+        >
+        <Typography variant='h4' fontWeight={'300'} fontSize={'25px'}>
+            Resultado:
           </Typography>
+          <Typography variant='h3' fontSize={'16px'}>
+            Seu IMC é: xx.xx <br></br>
+            Classificação: xxxx
+          </Typography>
+          
         </Box>
-
       </Card>
     </Box>
   )
